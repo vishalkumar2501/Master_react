@@ -1,0 +1,16 @@
+.hdr{
+    background-color: rgb(85, 255, 0);
+    display: flex;
+    align-items: center;
+    color: black;
+    justify-content: space-between;
+    
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+
+
+}
+.btn{
+    background-color: rgb(72, 26, 255);
+}
