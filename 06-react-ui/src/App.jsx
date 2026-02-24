@@ -46,3 +46,23 @@ const App = () => {
 }
 
 export default App
+
+// src   ------------------>>>>   structure of the project  <<<<<<<<<<<<<-----------------------------
+// │
+// ├── App.jsx
+// │
+// └── components
+//     │
+//     ├── Section1
+//     │   ├── Section1.jsx
+//     │   ├── Navbar.jsx
+//     │   ├── Page1content.jsx
+//     │   ├── Leftcontent.jsx
+//     │   ├── HeroText.jsx
+//     │   ├── Arrow.jsx
+//     │   ├── Rightcontent.jsx
+//     │   ├── RightCard.jsx
+//     │   └── RightCardContent1.jsx
+//     │
+//     └── Section2
+//         └── Section2.jsx
