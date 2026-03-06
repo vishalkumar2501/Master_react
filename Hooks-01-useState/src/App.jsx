@@ -7,7 +7,7 @@ const App = () => {
   
    function increaseNum(){
     setfirst(num => num+1)
-   }
+   } 
    function decreaseNum(){
     setfirst(num => num-1)
    }
