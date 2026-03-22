@@ -1,28 +1,23 @@
+import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 
+
 const App = () => {
-
-  const [data, setData] = useState([])
-
-  const getData = async () => {
-    
-    const response = await axios.get('https://picsum.photos/v2/list')
-
-    setData(response.data)
-    
-  }
+        const [Data, setData] = useState([])
+        const getdata = async ()=>{
+             const value = await axios.get('https://picsum.photos/v2/list')
+             setData(value.data);
+            }
   return (
     <div>
-      <button onClick={getData}>Get Data</button>
-      <div>
-        {data.map(function(elem,idx){
-
-          return <h3>Hello, {elem.author} {idx}</h3>
-          return <h3>Hello, {elem.author} {idx}</h3>
-        })}
-      </div>
-    </div>
+        <button onClick={getdata}>GETDATA</button>
+        <div>
+            {Data.map((elem , idx)=>{
+                    return <h3 key={idx}>hello,{idx} {elem.author}</h3>
+            })}
+        </div>
+     </div>
   )
 }
 
