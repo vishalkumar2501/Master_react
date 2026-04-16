@@ -5,3 +5,5 @@ I have successfully learned and implemented core concepts of React.js, including
 • Responsive Web Design
 • API Integration (Fetch/Axios)
 • Git & GitHub
+
+Developed multiple projects using React.js such as a Contact Management App and a To-Do List Application with full CRUD functionality and responsive UI.
