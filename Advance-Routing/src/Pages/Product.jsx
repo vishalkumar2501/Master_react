@@ -9,7 +9,7 @@ const Product = () => {
                 <Link className='text-xl font-semibold' to='/product/women'>Women</Link>
                 <Link className='text-xl font-semibold' to='/product/kids'>Kids</Link>
             </div>
-            { <Outlet /> /*iska used karege tab jaker product ke ander nested route ka content dikhega, jab tak koi nested route match nahi hoga tab tak product page khali dikhega, aur jab  */}
+            <Outlet /> {/*iska used karege tab jaker product ke ander nested route ka content dikhega, jab tak koi nested route match nahi hoga tab tak product page khali dikhega, aur jab  */}
         </div>
     )
 }
