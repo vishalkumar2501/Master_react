@@ -1,28 +1,43 @@
 import React from "react";
 
-const StudentCard = ({ name, course, attendance }) => {
+const StudentCard = ({ student, deleteStudent }) => {
 
   return (
     <div className="card">
 
-      <h2>{name}</h2>
+      <h2>{student.name}</h2>
 
-      <p>Course: {course}</p>
+      <p>
+        Course: {student.course}
+      </p>
 
       <p>
         Attendance:
         <span
           className={
-            attendance === "Present"
+            student.attendance === "Present"
               ? "present"
               : "absent"
           }
         >
-          {attendance}
+          {student.attendance}
         </span>
       </p>
 
-      <button>View Details</button>
+      <div className="btnContainer">
+
+        <button>
+          View
+        </button>
+
+        <button
+          className="deleteBtn"
+          onClick={() => deleteStudent(student.id)}
+        >
+          Delete
+        </button>
+
+      </div>
 
     </div>
   );
