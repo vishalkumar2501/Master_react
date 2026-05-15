@@ -1,6 +1,10 @@
 import React from "react";
 
-const StudentCard = ({ student, deleteStudent }) => {
+const StudentCard = ({
+  student,
+  deleteStudent,
+  toggleAttendance
+}) => {
 
   return (
     <div className="card">
@@ -8,7 +12,8 @@ const StudentCard = ({ student, deleteStudent }) => {
       <h2>{student.name}</h2>
 
       <p>
-        Course: {student.course}
+        Course:
+        {student.course}
       </p>
 
       <p>
@@ -26,13 +31,19 @@ const StudentCard = ({ student, deleteStudent }) => {
 
       <div className="btnContainer">
 
-        <button>
-          View
+        <button
+          onClick={() =>
+            toggleAttendance(student.id)
+          }
+        >
+          Toggle
         </button>
 
         <button
           className="deleteBtn"
-          onClick={() => deleteStudent(student.id)}
+          onClick={() =>
+            deleteStudent(student.id)
+          }
         >
           Delete
         </button>
