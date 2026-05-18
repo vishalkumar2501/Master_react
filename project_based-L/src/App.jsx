@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, {
+  useContext,
+  useState
+} from "react";
+
 import {
   Routes,
   Route
@@ -8,13 +12,20 @@ import Navbar from "./components/Navbar";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
-import StudentDetails from "./pages/StudentDetails";
+import Users from "./pages/Users";
+
+import StudentDetails
+from "./pages/StudentDetails";
+
+import {
+  ThemeContext
+} from "./context/ThemeContext";
 
 import "./App.css";
 
 const App = () => {
 
-  const [students, setStudents] = useState([
+  const [students] = useState([
     {
       id: 1,
       name: "Vishal",
@@ -29,8 +40,18 @@ const App = () => {
     }
   ]);
 
+  const { darkMode } =
+    useContext(ThemeContext);
+
   return (
-    <div>
+
+    <div
+      className={
+        darkMode
+          ? "app dark"
+          : "app"
+      }
+    >
 
       <Navbar />
 
@@ -46,6 +67,11 @@ const App = () => {
         <Route
           path="/about"
           element={<About />}
+        />
+
+        <Route
+          path="/users"
+          element={<Users />}
         />
 
         <Route
