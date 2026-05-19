@@ -1,34 +1,49 @@
 body{
   margin:0;
   font-family:Arial;
+}
+
+.app{
+  min-height:100vh;
   background:#f4f4f4;
+  color:black;
+}
+
+.dark{
+  background:#121212;
+  color:white;
+}
+
+.navbar{
+  background:#222;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+}
+
+.navLinks{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+.navLinks a{
+  color:white;
+  text-decoration:none;
+}
+
+.themeBtn{
+  padding:8px 15px;
+  border:none;
+  cursor:pointer;
+  border-radius:5px;
 }
 
 .container{
   padding:40px;
   text-align:center;
-}
-
-.form{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  margin-bottom:30px;
-  flex-wrap:wrap;
-}
-
-.form input,
-.form select{
-  padding:10px;
-  width:200px;
-}
-
-.form button{
-  padding:10px 20px;
-  border:none;
-  background:green;
-  color:white;
-  cursor:pointer;
 }
 
 .cardContainer{
@@ -39,41 +54,77 @@ body{
 }
 
 .card{
-  background:white;
   width:250px;
+  background:white;
   padding:20px;
   border-radius:10px;
   box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-.btnContainer{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  margin-top:15px;
+.dark .card{
+  background:#1f1f1f;
+}
+
+.card img{
+  width:100px;
+  border-radius:50%;
 }
 
 .card button{
-  padding:8px 15px;
+  padding:10px 15px;
   border:none;
-  cursor:pointer;
+  background:blue;
   color:white;
   border-radius:5px;
-  background:blue;
-}
-
-.deleteBtn{
-  background:red !important;
+  cursor:pointer;
 }
 
 .present{
-  color:green;
-  font-weight:bold;
-  margin-left:5px;
+  color:lightgreen;
 }
 
 .absent{
   color:red;
-  font-weight:bold;
-  margin-left:5px;
+}
+
+.detailsPage{
+  text-align:center;
+  padding:40px;
+}
+
+.detailsPage img{
+  border-radius:50%;
+}
+
+/* Loader */
+
+.loaderContainer{
+  height:80vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.loader{
+  width:60px;
+  height:60px;
+  border:8px solid #ddd;
+  border-top:8px solid blue;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+  100%{
+    transform:rotate(360deg);
+  }
+
+}
+
+.error{
+  text-align:center;
+  margin-top:100px;
+  color:red;
 }
