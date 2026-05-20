@@ -128,3 +128,61 @@ body{
   margin-top:100px;
   color:red;
 }
+
+.todoForm{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:30px;
+}
+
+.todoForm input{
+  width:300px;
+  padding:12px;
+}
+
+.todoForm button{
+  padding:12px 20px;
+  border:none;
+  background:green;
+  color:white;
+  cursor:pointer;
+}
+
+.todoList{
+  width:500px;
+  margin:auto;
+}
+
+.todoItem{
+  background:white;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.dark .todoItem{
+  background:#1f1f1f;
+}
+
+.todoBtns{
+  display:flex;
+  gap:10px;
+}
+
+.todoBtns button{
+  padding:8px 15px;
+  border:none;
+  color:white;
+  cursor:pointer;
+  border-radius:5px;
+  background:blue;
+}
+
+.completed{
+  text-decoration:line-through;
+  opacity:0.6;
+}
