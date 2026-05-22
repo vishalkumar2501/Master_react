@@ -36,3 +36,24 @@ import {
   QueryClient,
   QueryClientProvider
 } from "@tanstack/react-query";
+
+
+<QueryClientProvider
+  client={queryClient}
+>
+
+  <Provider store={store}>
+
+    <AuthProvider>
+
+      <ThemeContextProvider>
+
+        <App />
+
+      </ThemeContextProvider>
+
+    </AuthProvider>
+
+  </Provider>
+
+</QueryClientProvider>
