@@ -31,3 +31,8 @@ import {
 
 import { store }
 from "./app/store";
+
+import {
+  QueryClient,
+  QueryClientProvider
+} from "@tanstack/react-query";
