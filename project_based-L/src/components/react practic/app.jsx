@@ -257,3 +257,47 @@ function App() {
 }
 
 export default App;
+
+
+import React, { useState } from "react";
+
+function App() {
+
+  // TODO 1:
+  // Create counter state
+
+
+
+  // TODO 2:
+  // Create increment function
+
+
+
+  // TODO 3:
+  // Create decrement function
+
+
+
+  // TODO 4:
+  // Create reset function
+
+
+
+  return (
+    <div>
+
+      <h1>React Counter Manager</h1>
+
+      <h2>Counter Value:</h2>
+
+      <button>Increment</button>
+
+      <button>Decrement</button>
+
+      <button>Reset</button>
+
+    </div>
+  );
+}
+
+export default App;
