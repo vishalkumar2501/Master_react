@@ -51,4 +51,6 @@ function App() {
 }
 
 export default App;
-```
+
+
+import React, { useState } from "react"; function App() { // State for password visibility const [showPassword, setShowPassword] = useState(false); // Toggle Function const togglePassword = () => { setShowPassword(!showPassword); }; return ( <div style={{ textAlign: "center", marginTop: "50px" }}>
