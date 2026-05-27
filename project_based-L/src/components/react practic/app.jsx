@@ -3,47 +3,35 @@ import React, { useState } from "react";
 
 function App() {
 
-  // State for count
-  const [count, setCount] = useState(0);
+  // State for password visibility
+  const [showPassword, setShowPassword] = useState(false);
 
-  // Increment Function
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  // Decrement Function
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
-  // Reset Function
-  const reset = () => {
-    setCount(0);
+  // Toggle Function
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
 
-      <h1>Counter App</h1>
+      <h1>Show / Hide Password</h1>
 
-      <h2>{count}</h2>
+      <input
+        type={showPassword ? "text" : "password"}
+        placeholder="Enter Password"
+      />
 
-      <button onClick={increment}>
-        Increment
-      </button>
+      <br />
+      <br />
 
-      <button
-        onClick={decrement}
-        style={{ marginLeft: "10px" }}
-      >
-        Decrement
-      </button>
+      <button onClick={togglePassword}>
 
-      <button
-        onClick={reset}
-        style={{ marginLeft: "10px" }}
-      >
-        Reset
+        {
+          showPassword
+            ? "Hide Password"
+            : "Show Password"
+        }
+
       </button>
 
     </div>
