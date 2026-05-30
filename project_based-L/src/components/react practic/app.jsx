@@ -1,52 +1,89 @@
-
-import React, { useState } from "react";
+```jsx id="s4j8vn"
+import React, { useState, useEffect } from "react";
 
 function App() {
 
-  // State for background color
-  const [bgColor, setBgColor] = useState("white");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: ""
+  });
+
+  // Load data from localStorage on page load
+  useEffect(() => {
+    const savedData = localStorage.getItem("studentData");
+
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
+  }, []);
+
+  // Handle input change
+  const handleChange = (e) => {
+
+    const { name, value } = e.target;
+
+    const updatedData = {
+      ...formData,
+      [name]: value
+    };
+
+    setFormData(updatedData);
+
+    // Save data in localStorage
+    localStorage.setItem(
+      "studentData",
+      JSON.stringify(updatedData)
+    );
+  };
 
   return (
+    <div style={{ padding: "30px" }}>
 
-    <div
-      style={{
-        backgroundColor: bgColor,
-        height: "100vh",
-        textAlign: "center",
-        paddingTop: "50px"
-      }}
-    >
+      <h1>Student Form with localStorage</h1>
 
-      <h1>Background Color Changer</h1>
+      <div>
+        <label>Name:</label>
+        <br />
 
-      <button onClick={() => setBgColor("red")}>
-        Red
-      </button>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Enter Name"
+        />
+      </div>
 
-      <button
-        onClick={() => setBgColor("green")}
-        style={{ marginLeft: "10px" }}
-      >
-        Green
-      </button>
+      <br />
 
-      <button
-        onClick={() => setBgColor("blue")}
-        style={{ marginLeft: "10px" }}
-      >
-        Blue
-      </button>
+      <div>
+        <label>Email:</label>
+        <br />
 
-      <button
-        onClick={() => setBgColor("white")}
-        style={{ marginLeft: "10px" }}
-      >
-        Reset
-      </button>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Enter Email"
+        />
+      </div>
+
+      <hr />
+
+      <h2>Preview</h2>
+
+      <p>
+        <strong>Name:</strong> {formData.name}
+      </p>
+
+      <p>
+        <strong>Email:</strong> {formData.email}
+      </p>
 
     </div>
   );
 }
 
 export default App;
-
+```
