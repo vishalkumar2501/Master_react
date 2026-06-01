@@ -3,30 +3,75 @@ import React, { useState } from "react";
 
 function App() {
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState("");
+  const [result, setResult] = useState(0);
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
+  const add = () => {
+    setResult(Number(num1) + Number(num2));
+  };
+
+  const subtract = () => {
+    setResult(Number(num1) - Number(num2));
+  };
+
+  const multiply = () => {
+    setResult(Number(num1) * Number(num2));
+  };
+
+  const divide = () => {
+    setResult(Number(num1) / Number(num2));
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: darkMode ? "#222" : "#fff",
-        color: darkMode ? "#fff" : "#000",
-        height: "100vh",
-        textAlign: "center",
-        paddingTop: "50px"
-      }}
-    >
+    <div style={{ padding: "30px" }}>
 
-      <h1>
-        {darkMode ? "Dark Mode" : "Light Mode"}
-      </h1>
+      <h1>Simple Calculator</h1>
 
-      <button onClick={toggleTheme}>
-        Switch Theme
+      <input
+        type="number"
+        placeholder="Enter First Number"
+        value={num1}
+        onChange={(e) => setNum1(e.target.value)}
+      />
+
+      <br /><br />
+
+      <input
+        type="number"
+        placeholder="Enter Second Number"
+        value={num2}
+        onChange={(e) => setNum2(e.target.value)}
+      />
+
+      <br /><br />
+
+      <button onClick={add}>Add</button>
+
+      <button
+        onClick={subtract}
+        style={{ marginLeft: "10px" }}
+      >
+        Subtract
       </button>
+
+      <button
+        onClick={multiply}
+        style={{ marginLeft: "10px" }}
+      >
+        Multiply
+      </button>
+
+      <button
+        onClick={divide}
+        style={{ marginLeft: "10px" }}
+      >
+        Divide
+      </button>
+
+      <hr />
+
+      <h2>Result: {result}</h2>
 
     </div>
   );
