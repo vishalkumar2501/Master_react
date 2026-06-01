@@ -3,41 +3,30 @@ import React, { useState } from "react";
 
 function App() {
 
-  const [search, setSearch] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
-  const students = [
-    "Vishal",
-    "Rahul",
-    "Aman",
-    "Priya",
-    "Sneha",
-    "Rohit",
-    "Ankit"
-  ];
-
-  const filteredStudents = students.filter((student) =>
-    student.toLowerCase().includes(search.toLowerCase())
-  );
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
 
   return (
-    <div style={{ padding: "30px" }}>
+    <div
+      style={{
+        backgroundColor: darkMode ? "#222" : "#fff",
+        color: darkMode ? "#fff" : "#000",
+        height: "100vh",
+        textAlign: "center",
+        paddingTop: "50px"
+      }}
+    >
 
-      <h1>Search Filter App</h1>
+      <h1>
+        {darkMode ? "Dark Mode" : "Light Mode"}
+      </h1>
 
-      <input
-        type="text"
-        placeholder="Search Student..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
-      <hr />
-
-      <ul>
-        {filteredStudents.map((student, index) => (
-          <li key={index}>{student}</li>
-        ))}
-      </ul>
+      <button onClick={toggleTheme}>
+        Switch Theme
+      </button>
 
     </div>
   );
