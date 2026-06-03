@@ -1,60 +1,39 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
 
-  const images = [
-    "https://picsum.photos/id/1015/600/300",
-    "https://picsum.photos/id/1016/600/300",
-    "https://picsum.photos/id/1018/600/300"
-  ];
+  const [time, setTime] = useState(
+    new Date().toLocaleTimeString()
+  );
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
 
-  // Next Image
-  const nextImage = () => {
+    const timer = setInterval(() => {
 
-    setCurrentIndex(
-      (currentIndex + 1) % images.length
-    );
+      setTime(
+        new Date().toLocaleTimeString()
+      );
 
-  };
+    }, 1000);
 
-  // Previous Image
-  const prevImage = () => {
+    return () => {
+      clearInterval(timer);
+    };
 
-    setCurrentIndex(
-      currentIndex === 0
-        ? images.length - 1
-        : currentIndex - 1
-    );
-
-  };
+  }, []);
 
   return (
-    <div style={{ textAlign: "center", padding: "30px" }}>
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "100px"
+      }}
+    >
 
-      <h1>Image Slider</h1>
+      <h1>Digital Clock</h1>
 
-      <img
-        src={images[currentIndex]}
-        alt="slider"
-        width="600"
-        height="300"
-      />
-
-      <br /><br />
-
-      <button onClick={prevImage}>
-        Previous
-      </button>
-
-      <button
-        onClick={nextImage}
-        style={{ marginLeft: "10px" }}
-      >
-        Next
-      </button>
+      <h2>{time}</h2>
 
     </div>
   );
