@@ -1,50 +1,60 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function App() {
 
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const images = [
+    "https://picsum.photos/id/1015/600/300",
+    "https://picsum.photos/id/1016/600/300",
+    "https://picsum.photos/id/1018/600/300"
+  ];
 
-  useEffect(() => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => {
+  // Next Image
+  const nextImage = () => {
 
-        setUsers(data);
-        setLoading(false);
+    setCurrentIndex(
+      (currentIndex + 1) % images.length
+    );
 
-      })
-      .catch((error) => {
+  };
 
-        console.log(error);
-        setLoading(false);
+  // Previous Image
+  const prevImage = () => {
 
-      });
+    setCurrentIndex(
+      currentIndex === 0
+        ? images.length - 1
+        : currentIndex - 1
+    );
 
-  }, []);
+  };
 
   return (
-    <div style={{ padding: "30px" }}>
+    <div style={{ textAlign: "center", padding: "30px" }}>
 
-      <h1>Fetch API Data</h1>
+      <h1>Image Slider</h1>
 
-      {
-        loading
-          ? <h3>Loading...</h3>
-          : (
-              <ul>
-                {
-                  users.map((user) => (
-                    <li key={user.id}>
-                      {user.name}
-                    </li>
-                  ))
-                }
-              </ul>
-            )
-      }
+      <img
+        src={images[currentIndex]}
+        alt="slider"
+        width="600"
+        height="300"
+      />
+
+      <br /><br />
+
+      <button onClick={prevImage}>
+        Previous
+      </button>
+
+      <button
+        onClick={nextImage}
+        style={{ marginLeft: "10px" }}
+      >
+        Next
+      </button>
 
     </div>
   );
