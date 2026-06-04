@@ -74,3 +74,10 @@ if (activeIndex === index) {
 } else {
   setActiveIndex(index);
 }
+
+
+{
+  activeIndex === index && (
+    <p>{faq.answer}</p>
+  )
+}
