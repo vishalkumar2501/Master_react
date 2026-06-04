@@ -1,39 +1,67 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function App() {
 
-  const [time, setTime] = useState(
-    new Date().toLocaleTimeString()
-  );
+  const faqs = [
+    {
+      question: "What is React?",
+      answer: "React is a JavaScript library for building UI."
+    },
+    {
+      question: "What is JSX?",
+      answer: "JSX stands for JavaScript XML."
+    },
+    {
+      question: "What is useState?",
+      answer: "useState is a hook used to manage state."
+    }
+  ];
 
-  useEffect(() => {
+  const [activeIndex, setActiveIndex] = useState(null);
 
-    const timer = setInterval(() => {
+  const toggleAnswer = (index) => {
 
-      setTime(
-        new Date().toLocaleTimeString()
-      );
+    if (activeIndex === index) {
+      setActiveIndex(null);
+    } else {
+      setActiveIndex(index);
+    }
 
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-
-  }, []);
+  };
 
   return (
-    <div
-      style={{
-        textAlign: "center",
-        marginTop: "100px"
-      }}
-    >
+    <div style={{ padding: "30px" }}>
 
-      <h1>Digital Clock</h1>
+      <h1>Accordion FAQ</h1>
 
-      <h2>{time}</h2>
+      {
+        faqs.map((faq, index) => (
+          <div
+            key={index}
+            style={{
+              border: "1px solid black",
+              padding: "10px",
+              marginBottom: "10px"
+            }}
+          >
+
+            <h3
+              onClick={() => toggleAnswer(index)}
+              style={{ cursor: "pointer" }}
+            >
+              {faq.question}
+            </h3>
+
+            {
+              activeIndex === index && (
+                <p>{faq.answer}</p>
+              )
+            }
+
+          </div>
+        ))
+      }
 
     </div>
   );
