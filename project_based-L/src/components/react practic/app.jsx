@@ -69,3 +69,8 @@ function App() {
 
 export default App;
 ```
+if (activeIndex === index) {
+  setActiveIndex(null);
+} else {
+  setActiveIndex(index);
+}
