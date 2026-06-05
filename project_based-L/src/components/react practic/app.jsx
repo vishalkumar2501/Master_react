@@ -3,71 +3,118 @@ import React, { useState } from "react";
 
 function App() {
 
-  const [celsius, setCelsius] = useState("");
-  const [fahrenheit, setFahrenheit] = useState("");
+  const products = [
+    { id: 1, name: "Laptop", price: 50000 },
+    { id: 2, name: "Mobile", price: 20000 },
+    { id: 3, name: "Headphone", price: 3000 }
+  ];
 
-  // Celsius to Fahrenheit
-  const convertToFahrenheit = (value) => {
+  const [cart, setCart] = useState([]);
 
-    setCelsius(value);
+  // Add Product
+  const addToCart = (product) => {
 
-    if (value === "") {
-      setFahrenheit("");
-      return;
-    }
-
-    setFahrenheit(
-      ((Number(value) * 9) / 5 + 32).toFixed(2)
+    const existingProduct = cart.find(
+      (item) => item.id === product.id
     );
+
+    if (existingProduct) {
+
+      const updatedCart = cart.map((item) =>
+        item.id === product.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+
+      setCart(updatedCart);
+
+    } else {
+
+      setCart([
+        ...cart,
+        { ...product, quantity: 1 }
+      ]);
+
+    }
   };
 
-  // Fahrenheit to Celsius
-  const convertToCelsius = (value) => {
+  // Remove Product
+  const removeFromCart = (id) => {
 
-    setFahrenheit(value);
+    const updatedCart = cart
+      .map((item) =>
+        item.id === id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+      .filter((item) => item.quantity > 0);
 
-    if (value === "") {
-      setCelsius("");
-      return;
-    }
-
-    setCelsius(
-      (((Number(value) - 32) * 5) / 9).toFixed(2)
-    );
+    setCart(updatedCart);
   };
+
+  // Calculate Total
+  const totalPrice = cart.reduce(
+    (total, item) =>
+      total + item.price * item.quantity,
+    0
+  );
 
   return (
     <div style={{ padding: "30px" }}>
 
-      <h1>Temperature Converter</h1>
+      <h1>Add To Cart App</h1>
 
-      <div>
-        <label>Celsius:</label>
-        <br />
+      <h2>Products</h2>
 
-        <input
-          type="number"
-          value={celsius}
-          onChange={(e) =>
-            convertToFahrenheit(e.target.value)
-          }
-        />
-      </div>
+      {products.map((product) => (
+        <div key={product.id}>
 
-      <br />
+          <p>
+            {product.name} - ₹{product.price}
+          </p>
 
-      <div>
-        <label>Fahrenheit:</label>
-        <br />
+          <button
+            onClick={() => addToCart(product)}
+          >
+            Add To Cart
+          </button>
 
-        <input
-          type="number"
-          value={fahrenheit}
-          onChange={(e) =>
-            convertToCelsius(e.target.value)
-          }
-        />
-      </div>
+        </div>
+      ))}
+
+      <hr />
+
+      <h2>Cart</h2>
+
+      {cart.length === 0 ? (
+        <p>Cart is Empty</p>
+      ) : (
+        cart.map((item) => (
+          <div key={item.id}>
+
+            <p>
+              {item.name}
+              {" | "}
+              Qty: {item.quantity}
+              {" | "}
+              ₹{item.price * item.quantity}
+            </p>
+
+            <button
+              onClick={() =>
+                removeFromCart(item.id)
+              }
+            >
+              Remove
+            </button>
+
+          </div>
+        ))
+      )}
+
+      <hr />
+
+      <h2>Total: ₹{totalPrice}</h2>
 
     </div>
   );
