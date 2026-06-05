@@ -3,65 +3,71 @@ import React, { useState } from "react";
 
 function App() {
 
-  const faqs = [
-    {
-      question: "What is React?",
-      answer: "React is a JavaScript library for building UI."
-    },
-    {
-      question: "What is JSX?",
-      answer: "JSX stands for JavaScript XML."
-    },
-    {
-      question: "What is useState?",
-      answer: "useState is a hook used to manage state."
-    }
-  ];
+  const [celsius, setCelsius] = useState("");
+  const [fahrenheit, setFahrenheit] = useState("");
 
-  const [activeIndex, setActiveIndex] = useState(null);
+  // Celsius to Fahrenheit
+  const convertToFahrenheit = (value) => {
 
-  const toggleAnswer = (index) => {
+    setCelsius(value);
 
-    if (activeIndex === index) {
-      setActiveIndex(null);
-    } else {
-      setActiveIndex(index);
+    if (value === "") {
+      setFahrenheit("");
+      return;
     }
 
+    setFahrenheit(
+      ((Number(value) * 9) / 5 + 32).toFixed(2)
+    );
+  };
+
+  // Fahrenheit to Celsius
+  const convertToCelsius = (value) => {
+
+    setFahrenheit(value);
+
+    if (value === "") {
+      setCelsius("");
+      return;
+    }
+
+    setCelsius(
+      (((Number(value) - 32) * 5) / 9).toFixed(2)
+    );
   };
 
   return (
     <div style={{ padding: "30px" }}>
 
-      <h1>Accordion FAQ</h1>
+      <h1>Temperature Converter</h1>
 
-      {
-        faqs.map((faq, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid black",
-              padding: "10px",
-              marginBottom: "10px"
-            }}
-          >
+      <div>
+        <label>Celsius:</label>
+        <br />
 
-            <h3
-              onClick={() => toggleAnswer(index)}
-              style={{ cursor: "pointer" }}
-            >
-              {faq.question}
-            </h3>
+        <input
+          type="number"
+          value={celsius}
+          onChange={(e) =>
+            convertToFahrenheit(e.target.value)
+          }
+        />
+      </div>
 
-            {
-              activeIndex === index && (
-                <p>{faq.answer}</p>
-              )
-            }
+      <br />
 
-          </div>
-        ))
-      }
+      <div>
+        <label>Fahrenheit:</label>
+        <br />
+
+        <input
+          type="number"
+          value={fahrenheit}
+          onChange={(e) =>
+            convertToCelsius(e.target.value)
+          }
+        />
+      </div>
 
     </div>
   );
@@ -69,15 +75,3 @@ function App() {
 
 export default App;
 ```
-if (activeIndex === index) {
-  setActiveIndex(null);
-} else {
-  setActiveIndex(index);
-}
-
-
-{
-  activeIndex === index && (
-    <p>{faq.answer}</p>
-  )
-}
